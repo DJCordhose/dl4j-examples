@@ -18,8 +18,10 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
+// derived from
+// https://github.com/deeplearning4j/dl4j-examples/blob/master/dl4j-examples/src/main/java/org/deeplearning4j/examples/convolution/LenetMnistExample.java
 public class Convolutional {
-    private static final Logger log = LoggerFactory.getLogger(FeedForward1Hidden.class);
+    private static final Logger log = LoggerFactory.getLogger(Convolutional.class);
 
     static int nChannels = 1; // Number of input channels
     static int outputNum = 10; // The number of possible outcomes
@@ -30,6 +32,9 @@ public class Convolutional {
         DataSetIterator mnistTrain = new MnistDataSetIterator(Util.batchSize, true, Util.SEED);
         DataSetIterator mnistTest = new MnistDataSetIterator(Util.batchSize, false, Util.SEED);
 
+        /*
+            Construct the neural network
+         */
         log.info("Build model....");
         MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder()
             .seed(Util.SEED)
@@ -88,10 +93,10 @@ public class Convolutional {
         row vector format (i.e., 1x784 vectors), hence the "convolutionalFlat" input type used here.
         */
 
-        MultiLayerNetwork conv = new MultiLayerNetwork(conf);
-        conv.init();
+        MultiLayerNetwork model = new MultiLayerNetwork(conf);
+        model.init();
 
-        Util.train(conv, mnistTrain, mnistTest, "conv");
-        Util.printStats(mnistTest, conv);
+        Util.train(model, mnistTrain, mnistTest, "conv");
+        Util.printStats(mnistTest, model);
     }
 }

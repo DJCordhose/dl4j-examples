@@ -16,6 +16,8 @@ import java.io.IOException;
 
 import static org.nd4j.linalg.lossfunctions.LossFunctions.LossFunction;
 
+// derived from
+// https://github.com/deeplearning4j/dl4j-examples/blob/master/dl4j-examples/src/main/java/org/deeplearning4j/examples/feedforward/mnist/MLPMnistSingleLayerExample.java
 public class FeedForward1Hidden {
     private static final Logger log = LoggerFactory.getLogger(FeedForward1Hidden.class);
 

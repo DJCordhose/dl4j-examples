@@ -1,3 +1,4 @@
+import org.datavec.api.io.labels.ParentPathLabelGenerator;
 import org.datavec.api.records.reader.RecordReader;
 import org.datavec.api.split.FileSplit;
 import org.datavec.image.recordreader.ImageRecordReader;
@@ -6,6 +7,8 @@ import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.util.ModelSerializer;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
+import org.nd4j.linalg.dataset.api.preprocessor.DataNormalization;
+import org.nd4j.linalg.dataset.api.preprocessor.ImagePreProcessingScaler;
 import org.nd4j.linalg.factory.Nd4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +18,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+// based on
+// https://github.com/deeplearning4j/dl4j-examples/blob/master/dl4j-examples/src/main/java/org/deeplearning4j/examples/dataExamples/MnistImagePipelineExampleLoad.java
 public class Predictor {
     private static Logger log = LoggerFactory.getLogger(Predictor.class);
 
@@ -40,16 +45,25 @@ public class Predictor {
             }
         });
 
-        RecordReader recordReader = new ImageRecordReader(28, 28, 1);
+        ParentPathLabelGenerator labelMaker = new ParentPathLabelGenerator();
+        ImageRecordReader recordReader = new ImageRecordReader(28,28,1,labelMaker);
+
+//        RecordReader recordReader = new ImageRecordReader(28, 28, 1);
         final File rootDir = new File(classLoader.getResource("./samples").getFile());
         recordReader.initialize(new FileSplit(rootDir));
 
-        DataSetIterator dataSets = new RecordReaderDataSetIterator(recordReader, 1);
+//        DataSetIterator dataIter = new RecordReaderDataSetIterator(recordReader, Util.batchSize,1,10);
+        DataSetIterator dataIter = new RecordReaderDataSetIterator(recordReader, 1);
+
+        // we are doing it using convertToBinaryAndReshape as we also need a reshape
+//        DataNormalization scaler = new ImagePreProcessingScaler(0,1);
+//        scaler.fit(dataIter);
+//        dataIter.setPreProcessor(scaler);
 
         int index = 0;
-        while (dataSets.hasNext()) {
+        while (dataIter.hasNext()) {
             log.info(rootDir.list()[index++]);
-            final INDArray indArray = convertToBinary(dataSets.next().getFeatureMatrix());
+            final INDArray indArray = convertToBinaryAndReshape(dataIter.next().getFeatureMatrix());
 
             for (int i=0; i < models.size(); i++) {
                 MultiLayerNetwork model = models.get(i);
@@ -64,7 +78,7 @@ public class Predictor {
     }
 
     // convert the data so that it has the 0/1 form of the training data
-    private static INDArray convertToBinary(final INDArray indArray) {
+    private static INDArray convertToBinaryAndReshape(final INDArray indArray) {
         final int threshold = 127;
         final float[] f = indArray.data().asFloat();
         final float[] t = new float[f.length];
