@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="arbiter-examples" />
+        <module name="datavec-examples" />
+        <module name="dl4j-cuda-specific-examples" />
+        <module name="dl4j-examples" />
+        <module name="dl4j-spark" />
+        <module name="jughh-examples" />
+        <module name="nd4j-examples" />
+        <module name="rl4j-examples" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="arbiter-examples" target="1.8" />
+      <module name="datavec-examples" target="1.8" />
+      <module name="deeplearning4j-examples-parent" target="1.8" />
+      <module name="dl4j-cuda-specific-examples" target="1.8" />
+      <module name="dl4j-examples" target="1.8" />
+      <module name="dl4j-spark" target="1.8" />
+      <module name="dl4j-spark-examples" target="1.8" />
+      <module name="jughh-examples" target="1.8" />
+      <module name="nd4j-examples" target="1.8" />
+      <module name="rl4j-examples" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

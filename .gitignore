@@ -1,5 +1,5 @@
 target/
-.idea/*
+.idea/workspace.xml
 *.iml
 logs/
 *.ser
@@ -24,8 +24,6 @@ README.md~
 *~
 .pydevproject
 release.properties
-.idea/
-*.iml
 *.prefs
 *.settings/*
 model-saver-*

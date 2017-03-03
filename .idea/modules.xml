@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/arbiter-examples/arbiter-examples.iml" filepath="$PROJECT_DIR$/arbiter-examples/arbiter-examples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/datavec-examples/datavec-examples.iml" filepath="$PROJECT_DIR$/datavec-examples/datavec-examples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/deeplearning4j-examples-parent.iml" filepath="$PROJECT_DIR$/deeplearning4j-examples-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dl4j-cuda-specific-examples/dl4j-cuda-specific-examples.iml" filepath="$PROJECT_DIR$/dl4j-cuda-specific-examples/dl4j-cuda-specific-examples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dl4j-examples/dl4j-examples.iml" filepath="$PROJECT_DIR$/dl4j-examples/dl4j-examples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dl4j-spark-examples/dl4j-spark/dl4j-spark.iml" filepath="$PROJECT_DIR$/dl4j-spark-examples/dl4j-spark/dl4j-spark.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dl4j-spark-examples/dl4j-spark-examples.iml" filepath="$PROJECT_DIR$/dl4j-spark-examples/dl4j-spark-examples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jughh-examples/jughh-examples.iml" filepath="$PROJECT_DIR$/jughh-examples/jughh-examples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nd4j-examples/nd4j-examples.iml" filepath="$PROJECT_DIR$/nd4j-examples/nd4j-examples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rl4j-examples/rl4j-examples.iml" filepath="$PROJECT_DIR$/rl4j-examples/rl4j-examples.iml" />
+    </modules>
+  </component>
+</project>
